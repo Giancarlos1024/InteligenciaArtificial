@@ -8,34 +8,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
+//XDXDDXD
 function output(input) {
   let product;
 
-  // Regex remove non word/space chars
-  // Trim trailing whitespce
-  // Remove digits - not sure if this is best
-  // But solves problem of entering something like 'hi1'
+  // Regex elimina los caracteres que no son palabras/espacios 
+  // Recorta los espacios en blanco finales 
+  // Elimina los dígitos; no estoy seguro de si esto es lo mejor 
+  // Pero resuelve el problema de ingresar algo como 'hola'1'
 
   let text = input.toLowerCase().replace(/[^\w\s]/gi, "").replace(/[\d]/gi, "").trim();
   text = text
-    .replace(/ a /g, " ")   // 'tell me a story' -> 'tell me story'
     .replace(/i feel /g, "")
     .replace(/whats/g, "what is")
     .replace(/please /g, "")
     .replace(/ please/g, "")
-    .replace(/r u/g, "are you");
+  
 
   if (compare(prompts, replies, text)) { 
-    // Search for exact match in `prompts`
+    // Buscar coincidencias exactas en `prompts`
     product = compare(prompts, replies, text);
-  } else if (text.match(/thank/gi)) {
-    product = "You're welcome!"
+  } else if (text.match(/emergencia/gi)) {
+    product = "Si tiene una emergencia es mejor que visite urgentemente el hospital mas cercano..."
+
+  } else if (text.match(/gracias/gi)) {
+    product = "De nada...vuelve cuando quieras...!"
+
+  } else if (text.match(/dolor/gi)) {
+    product = "Si el dolor es persistente es mejor que visite pronto un centro de salud; si no escriba 'necesito una consulta' o para preguntas frecuentes escriba'una pregunta'."
+  } else if (text.match(/mal/gi)) {
+    product = "Si se encuentra delicado de salud visite urgentemente un centro medico!si no escriba 'necesito una consulta' o para preguntas frecuentes escriba'una pregunta'."
+  } else if (text.match(/ayuda/gi)) {
+    product = "Si necesita ayuda urgente visite un centro medico; si no escriba 'necesito una consulta' o para preguntas frecuentes escriba'una pregunta'."
+  } else if (text.match(/duele/gi)) {
+    product = "Si tiene un fuerte dolor visite un centro medico urgentemente ; si no escriba 'necesito una consulta' o para preguntas frecuentes escriba'una pregunta'."
+
   } else if (text.match(/(corona|covid|virus)/gi)) {
-    // If no match, check if message contains `coronavirus`
+    // Si no coincide, verifique si el mensaje contiene `coronavirus`
     product = coronavirus[Math.floor(Math.random() * coronavirus.length)];
+  }
+  else if (text.match(/(chau|hasta luego|nos vemos|adios)/gi)) {
+      product = "Hasta pronto, espero haberte ayudado..."
   } else {
-    // If all else fails: random alternative
+    // Si todo lo demás falla: alternativa aleatoria
     product = alternative[Math.floor(Math.random() * alternative.length)];
   }
 
@@ -52,12 +67,12 @@ function compare(promptsArray, repliesArray, string) {
         let replies = repliesArray[x];
         reply = replies[Math.floor(Math.random() * replies.length)];
         replyFound = true;
-        // Stop inner loop when input value matches prompts
+        // Detener el bucle interno cuando el valor de entrada coincida con las indicaciones
         break;
       }
     }
     if (replyFound) {
-      // Stop outer loop when reply is found instead of interating through the entire array
+      // Detener el ciclo externo cuando se encuentra la respuesta en lugar de iterar a través de toda la matriz
       break;
     }
   }
@@ -77,7 +92,7 @@ function addChat(input, product) {
   let botImg = document.createElement("img");
   let botText = document.createElement("span");
   botDiv.id = "bot";
-  botImg.src = "img/bot-mini.png";
+  botImg.src = "img/robot_act.jpg";
   botImg.className = "avatar";
   botDiv.className = "bot response";
   botText.innerText = "Typing...";

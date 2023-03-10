@@ -12,33 +12,41 @@ html {
 
 body {
 	font-size: 1.6rem;
-	font-family: 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, Helvetica,
-		sans-serif;
+	font-family:'Times New Roman';
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-color: #a1c5e7;
 	/*background-color: rgba(223, 242, 247, .5);*/
 	/*height: 100%;*/
 	/*margin: 0;*/
+	background-image: url(/img/chat.jpg); /*fondo de nuestro sitio web*/
 }
+
+
 
 img {
 	max-width: 100%;
+	border-radius: 100%;
 }
 
 .container {
 	width: min(90%, 1200rem);
 	margin: 0 auto;
+	
 }
 
 .header {
 	padding: 4rem 0;
+	font-size: 30px;
 }
 
 .h1 {
 	text-align: center;
 	margin: 0;
+}	
+.h3{
+	text-align: center;
+	margin: auto;
 }
 
 .chat-container {
@@ -84,11 +92,13 @@ input {
 	margin: 1.5rem;
 	border-radius: 1rem;
 	gap: 1.5rem;
+	background-image: url(/img/chat2.jpg);
 }
 
 
 .bot-img {
 	width: 40rem;
+	
 }
 
 /* Estilos de Scroll para motores Webkit y blink (Chrome, Safari, Opera... ) */
@@ -149,11 +159,11 @@ input {
 }
 
 .user span {
-	background-color: #59f56e;
+	background-color: white;
 }
 
 .bot span {
-	background-color: #eeaaff;
+	background-color: #0cdbca;
 }
 
 .footer {
